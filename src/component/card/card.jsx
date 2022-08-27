@@ -9,7 +9,7 @@ class Card extends Component {
       return (
         <div className="card--container" key={meal.id}>
           <img src={meal.image_url} alt={`${meal.title}`} />
-          <h2> {meal.title} </h2>
+          <h3> {meal.title} </h3>
         </div>
       );
     });
