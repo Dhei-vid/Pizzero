@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Pizzero
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web application created with React that showcases the different flavours/ dishes of pizza. 
+
+## Latest Update
+
+I have transitioned this project from using JavaScript (React) to incorporating TypeScript. 
 
 ## Available Scripts
 
