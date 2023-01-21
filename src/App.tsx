@@ -1,7 +1,7 @@
 import { Component } from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ChangeEvent } from 'react'
 
-import SeacrchBox from './component/searchBox/search-box'
+import SearchBox from './component/searchBox/search-box'
 import CardList from './component/cardList/card-list'
 
 import { getData } from './utils/data.utils'
@@ -32,16 +32,22 @@ const App = () => {
 
   console.log(pizzaData)
 
-  const onSearchChange = event => {
+  // for no explicit returns from the function we set the return type as void
+  const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const searchFieldValue = event.target.value.toLocaleLowerCase()
     setSearchField(searchFieldValue)
+
+    console.log(searchFieldValue)
   }
 
   return (
     <div className='App'>
       <h1>Pizza 🍕</h1>
-      {/* <SeacrchBox onChangeHandler={this.onSearchChange} />
-      <CardList meals={filteredRecipe} /> */}
+      <SearchBox
+        className='pizza-search-box'
+        onChangeHandler={onSearchChange}
+      />
+      <CardList meals={filteredRecipe} />
     </div>
   )
 }
