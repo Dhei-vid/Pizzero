@@ -2,7 +2,10 @@
 export const getData = async <T>(url: string): Promise<T> => {
   const response = await fetch(url)
 
+  // for pizza
   // const jsonResponse = await response.json().then(res => res.data.recipes)
+  // return jsonResponse
 
+  // for monsters
   return response.json()
 }

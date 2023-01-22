@@ -18,6 +18,8 @@ const App = () => {
   const [pizzaData, setPizzaData] = useState<PizzaRecipes[]>([])
   const [filteredRecipe, setFilteredRecipe] = useState(pizzaData)
 
+  // https://jsonplaceholder.typicode.com/users
+
   useEffect(() => {
     const fetchRecipe = async () => {
       const pizza = await getData<PizzaRecipes[]>(
@@ -28,16 +30,24 @@ const App = () => {
     }
 
     fetchRecipe()
-  })
+  }, [])
 
   console.log(pizzaData)
+
+  useEffect(() => {
+    const filteredData = pizzaData.filter(data => {
+      return data.title.toLocaleLowerCase().includes(searchField)
+    })
+
+    setFilteredRecipe(filteredData)
+
+    console.log(filteredRecipe)
+  }, [])
 
   // for no explicit returns from the function we set the return type as void
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const searchFieldValue = event.target.value.toLocaleLowerCase()
     setSearchField(searchFieldValue)
-
-    console.log(searchFieldValue)
   }
 
   return (
@@ -51,57 +61,5 @@ const App = () => {
     </div>
   )
 }
-
-// I wanted a Movies API decided to use food
-// class App extends Component {
-//   constructor () {
-//     super()
-
-//     this.state = {
-//       title: [],
-//       searchField: ''
-//     }
-//   }
-
-//   // Fetch data from the movies API
-//   componentDidMount () {
-//     fetch(
-//       'https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza&key=47f2b9e8-36f1-43be-afb7-97d0d9971ee5'
-//     )
-//       .then(res => {
-//         return res.json()
-//       })
-//       .then(mov => {
-//         // console.log(mov.data.recipes);
-//         this.setState(() => {
-//           return { title: mov.data.recipes }
-//         })
-//       })
-//       .catch(err => {
-//         console.error('something about the link', err)
-//       })
-//   }
-
-//   onSearchChange = event => {
-//     const searchField = event.target.value.toLocaleLowerCase()
-//     this.setState(() => {
-//       return { searchField }
-//     })
-//   }
-
-//   render () {
-//     const filteredRecipe = this.state.title.filter(data => {
-//       return data.title.toLocaleLowerCase().includes(this.state.searchField)
-//     })
-
-//     return (
-//       <div className='App'>
-//         <h1>Pizza 🍕</h1>
-//         <SeacrchBox onChangeHandler={this.onSearchChange} />
-//         <CardList meals={filteredRecipe} />
-//       </div>
-//     )
-//   }
-// }
 
 export default App

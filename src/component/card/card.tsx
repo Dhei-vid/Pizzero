@@ -1,5 +1,15 @@
 import { Component } from 'react'
+import { useState } from 'react'
+
 import './card-style.css'
+
+// const Card = () => {
+//   return (
+//     <div>
+//       <div></div>
+//     </div>
+//   )
+// }
 
 class Card extends Component {
   render () {
