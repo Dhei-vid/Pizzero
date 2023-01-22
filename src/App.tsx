@@ -21,7 +21,7 @@ const App = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       const pizza = await getData<PizzaRecipes[]>(
-        'https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza&key=47f2b9e8-36f1-43be-afb7-97d0d9971ee5'
+        'https://jsonplaceholder.typicode.com/users'
       )
 
       setPizzaData(pizza)
