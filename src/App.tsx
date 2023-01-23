@@ -7,10 +7,10 @@ import CardList from './component/cardList/card-list'
 import { getData } from './utils/data.utils'
 import './App.css'
 
-type PizzaRecipes = {
-  id: string
-  title: string
-  image_url: string
+export type PizzaRecipes = {
+  id: number
+  name: string
+  username: string
 }
 
 const App = () => {
@@ -33,15 +33,15 @@ const App = () => {
   }, [])
 
   console.log(pizzaData)
+  console.log(filteredRecipe)
+  console.log('Search field ', searchField)
 
   useEffect(() => {
     const filteredData = pizzaData.filter(data => {
-      return data.title.toLocaleLowerCase().includes(searchField)
+      return data.name.toLocaleLowerCase().includes(searchField)
     })
 
     setFilteredRecipe(filteredData)
-
-    console.log(filteredRecipe)
   }, [])
 
   // for no explicit returns from the function we set the return type as void
@@ -57,7 +57,7 @@ const App = () => {
         className='pizza-search-box'
         onChangeHandler={onSearchChange}
       />
-      <CardList meals={filteredRecipe} />
+      <CardList monsters={filteredRecipe} />
     </div>
   )
 }
