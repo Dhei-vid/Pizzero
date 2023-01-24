@@ -7,8 +7,4 @@ export const getData = async <T>(url: string): Promise<T> => {
 
   // console.log(pizzaResponse.data.recipes)
   return pizzaResponse.data.recipes;
-
-
-  // for monsters
-  return await response.json()
 }
