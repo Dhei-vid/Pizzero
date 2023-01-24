@@ -1,11 +1,14 @@
 // I am making use of a generic type because I do not know what I will get back - T, starting type
+
 export const getData = async <T>(url: string): Promise<T> => {
   const response = await fetch(url)
+  const pizzaResponse = await response.json()
+  
 
-  // for pizza
-  // const jsonResponse = await response.json().then(res => res.data.recipes)
-  // return jsonResponse
+  // console.log(pizzaResponse.data.recipes)
+  return pizzaResponse.data.recipes;
+
 
   // for monsters
-  return response.json()
+  return await response.json()
 }

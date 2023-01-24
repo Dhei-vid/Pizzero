@@ -7,10 +7,17 @@ import CardList from './component/cardList/card-list'
 import { getData } from './utils/data.utils'
 import './App.css'
 
+// export type PizzaRecipes = {
+//   id: number
+//   name: string
+//   username: string
+// }
+
 export type PizzaRecipes = {
   id: number
-  name: string
-  username: string
+  image_url: string
+  title: string
+   
 }
 
 const App = () => {
@@ -19,13 +26,15 @@ const App = () => {
   const [filteredRecipe, setFilteredRecipe] = useState(pizzaData)
 
   // https://jsonplaceholder.typicode.com/users
+  // https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza
 
   useEffect(() => {
     const fetchRecipe = async () => {
       const pizza = await getData<PizzaRecipes[]>(
-        'https://jsonplaceholder.typicode.com/users'
+        'https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza'
       )
 
+      
       setPizzaData(pizza)
     }
 
@@ -34,15 +43,14 @@ const App = () => {
 
   console.log(pizzaData)
   console.log(filteredRecipe)
-  console.log('Search field ', searchField)
 
-  useEffect(() => {
-    const filteredData = pizzaData.filter(data => {
-      return data.name.toLocaleLowerCase().includes(searchField)
-    })
+  // useEffect(() => {
+  //   const filteredData = pizzaData.filter(data => {
+  //     return data.title.toLocaleLowerCase().includes(searchField)
+  //   })
 
-    setFilteredRecipe(filteredData)
-  }, [])
+  //   setFilteredRecipe(filteredData)
+  // }, [searchField])
 
   // for no explicit returns from the function we set the return type as void
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -50,6 +58,7 @@ const App = () => {
     setSearchField(searchFieldValue)
   }
 
+  console.log('Search field ', searchField)
   return (
     <div className='App'>
       <h1>Pizza 🍕</h1>
