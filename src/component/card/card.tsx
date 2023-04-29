@@ -1,8 +1,6 @@
 import { PizzaRecipes } from "../../App";
 import "./card-style.css";
 
-// `https://robohash.org/${meal.id}?set=set3&size=180x180`
-
 type CardProp = {
   pizza: PizzaRecipes[];
 };
