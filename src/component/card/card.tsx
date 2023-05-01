@@ -6,6 +6,7 @@ type CardProp = {
 };
 
 const Card = ({ pizza }: CardProp) => {
+  console.log(pizza);
   return (
     <>
       {pizza.map((meal) => {
